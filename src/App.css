@@ -26,17 +26,7 @@
       
     }
   
-    /* #like {
-      position: relative;
-    }
-  
-    #follow {
-      position: relative;
-    }
-  
-    #message {
-      position: relative;
-    } */
+   
   
     .profile-photo {
         position: fixed;
@@ -59,24 +49,35 @@
    
   
     .Columns {
-        position: relative;
+        position: fixed;
          width: 850px;
-         height: 1000px;
-         /* display: inline-block; */
+         height: auto;
+         display: inline-block;
          margin: 0px auto;
      }
   
   
      .Column1 {
+      max-height: 80vh;
+      overflow-x: scroll;
         border: 1px solid black;
-        width: 328px;
+        width: 500px;
         height: auto;
-        /* float: left; */
+        float: left;
         background-color: rgb(177, 74, 74);
-        margin: 10px 10px 10px 10px;
+        /* margin: 10px 10px 10px 10px; */
         
         }
-  
+
+
+        /* .message-feed {
+         direction: column;
+         align-items: center;
+          height: auto;
+          width: 300px;
+
+        }
+   */
   
         
            
@@ -87,12 +88,13 @@
   
   
             .Column2 {
-              border: 1px solid black;
-              width: 328px;
-              height: auto;
-              /* float: left; */
-              background-color: rgb(177, 74, 74);
-              margin: 10px 10px 10px 10px;
+              max-height: 80vh;
+              overflow-x: scroll;
+                border: 1px solid black;
+                width: 500px;
+                height: auto;
+                float: left;
+                background-color: rgb(177, 74, 74);
             }
               
             /* #outerboxHF {
