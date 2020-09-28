@@ -25,7 +25,30 @@
       background-color: black;
       
     }
+
+    .Menu{
+      background-color: rgb(142, 45, 45);
+    }
   
+    div.jerry{
+      background-color: rgb(67, 105, 67);
+      margin-left: 60px;
+      margin-right: 60px;
+      width: unset;
+     
+    }
+
+
+    .feed{
+      background-color: rgb(75, 75, 165);
+      
+    }
+
+
+    /* .dsqlcn{
+      background-color: rgb(67, 105, 67) ;
+    } */
+
    
   
     .profile-photo {
@@ -40,35 +63,32 @@
          z-index: 1;
          background-image: url("./images/Jerry.jpg");
          background-size: cover;
-
-         
-         
-        
-         
+     
     }
 
 
+
     
-    /* .Menu {
-      background-color: lightskyblue;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 1em;
-      border-radius: 1em;
-    }
+
+
+  #user-profile{
+
+    border: 5px solid yellow;
     
-    #menu-links {
-      display: flex;
-      padding-left: 1em;
-    }
-    
-    #menu-links a {
-      padding-right: 0.5em;
-      color: darkblue;
-      text-decoration: underline;
-      cursor: pointer;
-    } */
+  }
+
+/* .img.src{
+  height: 200px;
+  width: 200px;
+} */
+
+
+
+
+   
+
+
+   
   
     
   
@@ -85,13 +105,14 @@
   
      .Column1 {
       max-height: 80vh;
-      overflow-x: scroll;
+      overflow-y: scroll;
+      overflow-x: hidden;
         border: 4px solid black;
         width: 600px;
         height: auto;
-        float: right;
+        /* float: right; */
         background-color: rgb(177, 74, 74);
-        margin: 10px 10px 10px 10px;
+        /* margin: 10px 10px 10px 10px; */
         pad: medium;
         }
 
@@ -100,7 +121,7 @@
          
            .message {
             flex: 1;
-            width: 600px;
+            width: fit-content;
             padding: 20px;
             margin-right: 400px;
             margin-left: 400px;
@@ -109,10 +130,16 @@
             color: black;
           }
 
+      .message-feed{
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        
+       
+      }
 
-          .profile Img{
-            border: 3px solid red;
-          }
+
+          
 
            
            

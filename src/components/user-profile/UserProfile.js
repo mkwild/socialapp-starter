@@ -47,7 +47,7 @@ import {
       align='center'
       justify='between'
       background='brand'
-      pad={{ left: 'medium', right: 'small', vertical: 'small' }}
+      // pad={{ left: 'medium', right: 'small', vertical: 'small' }}
       elevation='medium'
   
       style={{ zIndex: '1' }}
