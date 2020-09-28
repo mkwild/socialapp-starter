@@ -86,12 +86,14 @@ function UserProfile (props) {
 
             <JerryBox>
               <div className="profile-photo">Yea I'm Jerry
-          <div className="buttons">
+          {/* <div className="buttons">
                   <button id="like">Like</button>
                   <button id="follow">Follow</button>
                   <button id="message">Message</button>
+                </div> */}
 
-                </div>
+                
+                
               </div>
             </JerryBox>
 
@@ -103,7 +105,7 @@ function UserProfile (props) {
                   </Box>
                 </div>
               </div>
-              <div className="Column2">this is column 2</div>
+              
             </Columns>
 
             

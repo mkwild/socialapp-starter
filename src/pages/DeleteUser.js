@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import DeleteUserService from "./DeleteUserService"
-import Menu from "../menu/Menu";
+import DeleteUserService from "../components/deleteUser/DeleteUserService"
+import Menu from "../components/menu/Menu";
 import { Link } from "react-router-dom";
 import { Grommet } from 'grommet'
 // import { Home } from '../pages/Home'

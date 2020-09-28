@@ -33,7 +33,9 @@ class GetMessages extends Component {
             postText.innerText = messageArray[i].text
             post.append(postUser)
             post.append(postText)
-            feed.append(post)            
+            feed.append(post)   
+            
+            
         }
     }
 
@@ -47,7 +49,7 @@ class GetMessages extends Component {
         else {
             return (
                 <div className="message-feed">
-                    
+                   
                 </div>
             )
         }

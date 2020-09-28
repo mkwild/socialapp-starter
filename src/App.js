@@ -3,11 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { Grommet } from 'grommet'
 import UserProfile from "./components/user-profile/UserProfile"
 
-<<<<<<< HEAD
-// import DeleteUser from "./pages/DeleteUser";
-=======
-import DeleteUser from "./components/deleteUser/DeleteUser";
->>>>>>> 49bd5cb545c5772516ab49ece9a7b9428e4f8aeb
+import DeleteUser from "./pages/DeleteUser";
 import Home from "./pages/Home";
 import LoginPage from "./pages/LoginPage";
 import Profile from "./pages/Profile";
@@ -22,7 +18,8 @@ function App() {
 
 
    <div className="App">
-     <UserProfile/>
+     {/* <UserProfile/> */}
+     <Grommet>
       <Switch>
         <Route
           exact
@@ -56,18 +53,12 @@ function App() {
         />
         {/* <Route
           exact
-<<<<<<< HEAD
           path="/deleteUser"
           component={DeleteUser} */}
         {/* /> */}
-=======
-          path="*"
-          component={NotFound}
-        />
-        
->>>>>>> 49bd5cb545c5772516ab49ece9a7b9428e4f8aeb
       </Switch>
 
+</Grommet>
 
 
     </div >
