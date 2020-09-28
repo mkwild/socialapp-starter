@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import PostMessageService from "./PostMessageService"
-import "./PostMessages.css"
-class PostMessage extends Component {
+import DeleteMessageService from "./DeleteMessageService"
+
+class DeleteMessage extends Component {
     constructor(props) {
         super(props)
-        this.client = new PostMessageService()
+        this.client = new DeleteMessageService()
         this.state = {
             text: ""
         }
     }
 
     handleSubmit = e => {
-        this.client.postMessage(this.state)
+        this.client.DeleteMessage(this.state)
     }
 
     handleChange = e => {
@@ -22,11 +22,11 @@ class PostMessage extends Component {
     render() {
         return (
             <div>
-                <form id="new-message" onSubmit={this.handleSubmit}>
-                <label htmlFor="message">Type Message: </label>
+                <form id="delete-message" onSubmit={this.handleSubmit}>
+                <label htmlFor="message">Delete Message</label>
                     <input
                         type="text"
-                        name="message"
+                        name="deleteMessageInput"
                         required
                         onChange={this.handleChange}
                     />
@@ -39,4 +39,4 @@ class PostMessage extends Component {
     }
 }
 
-export default PostMessage
+export default DeleteMessage
