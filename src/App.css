@@ -45,9 +45,7 @@
     }
 
 
-    /* .dsqlcn{
-      background-color: rgb(67, 105, 67) ;
-    } */
+   
 
    
   
@@ -66,33 +64,6 @@
      
     }
 
-
-
-    
-
-
-  #user-profile{
-
-    border: 5px solid yellow;
-    
-  }
-
-/* .img.src{
-  height: 200px;
-  width: 200px;
-} */
-
-
-
-
-   
-
-
-   
-  
-    
-  
-   
   
     .Columns {
         position: fixed;
@@ -137,6 +108,35 @@
         
        
       }
+
+
+     #User-Profile{
+       display: inline;
+       /* padding: 20px; */
+       margin: 20px;
+
+     }
+
+
+     #user-profile{
+       display: flex;
+       flex-direction: column;
+       justify-content: space-around;
+       flex-wrap: wrap;
+       margin-left: 500px;
+       margin-right: 500px;
+     }
+
+     #profile.pic{
+       
+     }
+
+
+     #user-name{
+       display: flex;
+       padding-top: 20px;
+       padding-bottom: 20px;
+     }
 
 
           

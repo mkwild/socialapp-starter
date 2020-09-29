@@ -20,3 +20,7 @@
   text-decoration: underline;
   cursor: pointer;
 }
+
+a:hover {
+  background-color: rgb(67, 105, 67);
+}
