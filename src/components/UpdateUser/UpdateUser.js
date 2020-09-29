@@ -1,90 +1,93 @@
 //import React from "react";
 
-import React, { Component } from "react"
-import ClientOptions from '../ClientOptions'
-import SocialApp from "../socialapp/SocialApp";
-import GetUsersService from '../getUsers/GetUsersService'
-import { displayName } from "react-spinkit";
+import React , { Component } from "react"
+import { Redirect } from "react-router-dom"
+import GetUsersService from "../getUsers/GetUsersService"
+import UpdateUserService from "./UpdateUserService"
+
 class UpdateUser extends Component {
     constructor(props) {
         super(props)
-        this.client = new ClientOptions()
-
+        this.client = new UpdateUserService()
+        this.getInfoClient = new GetUsersService()
         this.state = {
-            
-            
-            password: '',
-            displayName: '',
-            about: '',
-        }
+            submitted: false,
+            formData: {
+                password: '',
+                about: '',
+                displayName: ''
+            }
     }
-    updateProfile() {
-        return this.client.UpdateClient()
 
-            
-        
+    componentDidMount() {
+        const loginData = JSON.parse(localStorage.getItem("login"));
+        return this.getInfoClient.getUser(loginData.result.username).then(result => {
+            this.setState({formData: {
+                about: result.data.user.about,
+                displayName: result.data.user.displayName
+                }
+            })
+        })
     }
-    
+
     handleChange = (event) => {
-        this.setState({[event.target.name]:event.target.value})
+        const formData = { ...this.state.formData }
+        formData[event.target.name] = event.target.value
+        this.setState({formData})
+
     }
-    handleSubmit = (event) => {
-        event.preventDefault()
-        this.client.UpdateClient(this.state)
+
+    handleSubmit = (e) => {
+        e.preventDefault()
+        this.client.updateUser(this.state.formData)
+        this.setState({
+            submitted: true
+        })
+
     }
-
-
-
-
-
 
     render() {
-        //may need a if statment for api data
-        const getData = this.state.data
-        console.log(getData)
-
-
-
-        return (
-            <div className="UpdateUser">
-                <form onSubmit={this.handleSubmit}>
-                    <div>
-                        <label htmlFor=""> Name</label>
-                        <input type="text"
-                            name="displayName"
-                            
-
+        if(!this.state.submitted){
+            return(
+                <div className="UpdateUser">
+                    <form id="user-info" onSubmit={this.handleSubmit}>
+                        <label htmlFor="password">
+                            Password:
+                        </label>
+                        <input
+                            type="password"
+                            name="password"
+                            required
                             onChange={this.handleChange}
                         />
-
-                    </div>
-
-                    <div>
-                        <label htmlFor="">about</label>
-                        <input type="text"
+                        <label htmlFor="about">
+                            About You:
+                        </label>
+                        <input
+                            type="text"
                             name="about"
-                            
-
                             onChange={this.handleChange}
                         />
-                        <label htmlFor="">Password</label>
-                        <input type= "text"
-                        name= "password"
-                        onChange={this.handleChange}
-                        
-                        
+                        <label htmlFor="displayName">
+                            Display Name:
+                        </label>
+                        <input
+                            type="text"
+                            name="displayName"
+                            onChange={this.handleChange}
                         />
-
-
-                    </div>
-
-                    <button type= 'submit'>Submit</button>
-                </form>
-
-                
-            </div>
-        )
+                        <input
+                            type="submit"
+                            value="submit"
+                        />
+                    </form>
+                </div>
+            )
+        }
+        else {
+            return <Redirect to="/" />
+        }
     }
 }
 
-export default UpdateUser;
+export default UpdateUser

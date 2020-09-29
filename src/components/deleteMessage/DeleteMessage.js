@@ -1,52 +1,43 @@
 import React, { Component } from 'react'
-import DeleteUserService from "./DeleteUserService"
+import DeleteMessageService from "./DeleteMessageService"
 import Menu from "../menu/Menu";
 import { Link } from "react-router-dom";
 import { Grommet } from 'grommet'
 import { Redirect } from 'react-router-dom';
 import axios from "axios"
-// import Button from '@material-ui/core/Button';
-// import { Home } from '../pages/Home'
 
-class DeleteNow extends Component {
+class DeleteMessage extends Component {
     constructor(props) {
         super(props)
-        this.client = new DeleteUserService();
+        this.client = new DeleteMessageService()
         this.loginData = JSON.parse(localStorage.getItem("login"));
         this.state = {
             text: "",
             username: "",
             password: ""
         }
+        
+    }
+
+    handleSubmit = e => {
+        this.client.DeleteMessage(this.state)
     }
 
     handleRemove = (e) => {
-        const id = JSON.parse(localStorage.getItem("login"));
+        const id = JSON.parse(localStorage.getItem("messageId"));
         const url = 'https://socialapp-api.herokuapp.com/users/';
         e.preventDefault();
-        this.client.deleteNow(url + id.result.username);
+        this.client.deleteNow(url + id.result);
         return <Redirect to="/Home" />
 
     }
 
     handleChange = e => {
-        // let loginData = JSON.parse(localStorage.getItem("login"));
-        console.log("login")
-        // return <Redirect to="/Home" />
-        // window.location = "https://"
-    };
+        // this.setState({ text: e.target.value });
+        // console.log(JSON.stringify(this.state))
+      };
 
-    // handleSubmit() {
-    //     let movie = {
-    //         title: this.title.value,
-    //         genre: this.genre.value,
-    //         year: this.year.value,
-    //         actors: this.actors.value.split(','),
-    //         rating: this.rating.value
-    //     }
-    //     console.log(movie);
-
-    render() {
+      render() {
         return (
             <div>
                 <Grommet>
@@ -60,7 +51,7 @@ class DeleteNow extends Component {
                     {/* <Home /> */}
                     <br />
                     <form id="delete-user" onSubmit={this.handleRemove}>
-                        <label htmlFor="delete">Type Username to Delete:</label>
+                        <label htmlFor="delete">Type Message ID to Delete:</label>
                         <input
                             type="text"
                             name="delete"
@@ -69,7 +60,7 @@ class DeleteNow extends Component {
                         /><br />
                         <button type="submit"
                             onChange={this.handleChange}>
-                            Delete Forever!
+                            Delete Message
                         </button>
                     </form>
                 </Grommet>
@@ -78,7 +69,5 @@ class DeleteNow extends Component {
         )
     }
 }
-// then take to blank page which says: 'Thank you. Now make a new user."
-//window.location = "https://www.example.com";(use where you would use an 'alert'.)
 
-export default DeleteNow;
+export default DeleteMessage

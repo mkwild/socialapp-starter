@@ -1,19 +1,19 @@
 import { jsonHeaders, handleJsonResponse } from "../../redux/actionCreators/constants";
 import axios from "axios"
 
-class PostMessageService {
+class LikeMessageService {
     constructor(url = 'https://socialapp-api.herokuapp.com/', client = axios.create()){
-        this.url = url + "messages";
+        this.url = url + "likes";
         this.client = client;
     }
 
-    postMessage(messageBody) {
+    likeMessage(id) {
         const loginData = JSON.parse(localStorage.getItem("login"));
-
+        let fetchBody = "{\"messageId\":" + id + "}"
         fetch(this.url, {
             method: "POST",
             headers: { Authorization: `Bearer ${loginData.result.token}`, ...jsonHeaders },
-            body: JSON.stringify(messageBody)
+            body: fetchBody
         })
         .then(handleJsonResponse)
         .then(result => {
@@ -22,4 +22,4 @@ class PostMessageService {
     }
 };
 
-export default PostMessageService;
+export default LikeMessageService;
