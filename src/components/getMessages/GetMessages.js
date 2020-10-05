@@ -26,20 +26,20 @@ class GetMessages extends Component {
             this.setState({
                 mounted: true
             })
-            this.updateMessages()
+            // this.updateMessages()
         })
     }
 
-    updateMessages() {
-        return this.client.getMessages().then(result => {
-            if (result.data.messages[0].id === this.state.messages[0].id) {
-                setTimeout(this.updateMessages(), 10000);
-            }
-            else {
-                this.getMessages()
-            }
-        })
-    }
+    // updateMessages() {
+    //     return this.client.getMessages().then(result => {
+    //         if (result.data.messages[0].id === this.state.messages[0].id) {
+    //             setTimeout(this.updateMessages(), 10000);
+    //         }
+    //         else {
+    //             this.getMessages()
+    //         }
+    //     })
+    // }
 
     displayMessages() {
         const feed = document.querySelector(".message-feed")

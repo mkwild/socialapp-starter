@@ -15,67 +15,59 @@ class DeleteNow extends Component {
         this.loginData = JSON.parse(localStorage.getItem("login"));
         this.state = {
             text: "",
-            username: "",
-            password: ""
+            deleted: false
         }
     }
 
     handleRemove = (e) => {
-        const id = JSON.parse(localStorage.getItem("login"));
-        const url = 'https://socialapp-api.herokuapp.com/users/';
+        let userName = this.state.text
         e.preventDefault();
-        this.client.deleteNow(url + id.result.username);
-        return <Redirect to="/Home" />
-
+        this.client.deleteNow(userName);
+        this.setState({deleted: true})
+        return
     }
 
     handleChange = e => {
-        // let loginData = JSON.parse(localStorage.getItem("login"));
-        console.log("login")
-        // return <Redirect to="/Home" />
-        // window.location = "https://"
+        this.setState({ text: e.target.value })
     };
 
-    // handleSubmit() {
-    //     let movie = {
-    //         title: this.title.value,
-    //         genre: this.genre.value,
-    //         year: this.year.value,
-    //         actors: this.actors.value.split(','),
-    //         rating: this.rating.value
-    //     }
-    //     console.log(movie);
-
     render() {
-        return (
-            <div>
-                <Grommet>
+        if (!this.state.deleted) {
+            return (
+                <div>
+                    <Grommet>
 
-                    < br />
-                    <Menu isAuthenticated={this.props.isAuthenticated}
-                    />
-                    <Link to="/messagefeed">Message Feed </Link><br />
-                    <Link to="/">Profile </Link><br />
-                    <Link to="/userlist"> User List</Link><br />
-                    {/* <Home /> */}
-                    <br />
-                    <form id="delete-user" onSubmit={this.handleRemove}>
-                        <label htmlFor="delete">Type Username to Delete:</label>
-                        <input
-                            type="text"
-                            name="delete"
-                            required
+                        < br />
+                        <Menu isAuthenticated={this.props.isAuthenticated}
+                        />
+                        <Link to="/messagefeed">Message Feed </Link><br />
+                        <Link to="/">Profile </Link><br />
+                        <Link to="/userlist"> User List</Link><br />
+                        {/* <Home /> */}
+                        <br />
+                        <form id="delete-user" onSubmit={this.handleRemove}>
+                            <label htmlFor="delete">Type Username to Delete:</label>
+                            <input
+                                type="text"
+                                name="delete"
+                                onChange={this.handleChange}
+                                required
 
-                        /><br />
-                        <button type="submit"
-                            onChange={this.handleChange}>
-                            Delete Forever!
-                        </button>
-                    </form>
-                </Grommet>
+                            /><br />
+                            <button type="submit">
+                                Delete Forever!
+                            </button>
+                        </form>
+                    </Grommet>
 
-            </div>
-        )
+                </div>
+            )
+        }
+        else {
+            return (
+                <Redirect to="/login" />
+            )
+        }
     }
 }
 // then take to blank page which says: 'Thank you. Now make a new user."
